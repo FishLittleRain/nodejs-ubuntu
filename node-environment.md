@@ -67,4 +67,18 @@ Ubuntu 12.04 LTS 64bit
     ~ npm -v
     1.4.28
 
+安装express
 
+    ~ sudo npm install express -g
+    
+安装成功。 
+    
+##3. 建立express工程，启动第一个项目
+
+
+
+
+
+
+
+    
