@@ -11,9 +11,9 @@ Ubuntu 12.04 LTS 64bit
 
 获取最新版：
 
-    ``` 
+   
     http://nodejs.org
-    ```
+    
     
 解压：
 
