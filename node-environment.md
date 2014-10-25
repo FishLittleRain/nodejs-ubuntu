@@ -1,2 +1,2 @@
-# nodeÔÚUbuntuÏÂµÄ°²×°¼°ÅäÖÃ
+# nodeå®‰è£…åŠç¯å¢ƒé…ç½®
 This is [an example](http://example.com/ "Title") inline link.
