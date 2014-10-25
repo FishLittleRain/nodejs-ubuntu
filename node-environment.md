@@ -78,7 +78,6 @@ Ubuntu 12.04 LTS 64bit
 
 安装成功。 
     
-##3. 建立express工程，启动第一个项目
 
 
 
