@@ -71,6 +71,11 @@ Ubuntu 12.04 LTS 64bit
 
     ~ sudo npm install express -g
     
+    
+安装express-generator
+
+    ~ sudo npm install express-generator -g
+
 安装成功。 
     
 ##3. 建立express工程，启动第一个项目
