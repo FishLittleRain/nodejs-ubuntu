@@ -9,7 +9,7 @@ Ubuntu 12.04 LTS 64bit
 
 优点：快速安装 缺点据网上说会出错；我安装完出错 可能是node版本原因
 
-获取最新版：<br/>
+获取最新版：
 
     ```bash 
     http://nodejs.org
