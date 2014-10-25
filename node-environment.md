@@ -43,16 +43,28 @@ Ubuntu 12.04 LTS 64bit
 
     ~ cd node
     ~ pwd
-    ~ /home/nexus/node 
+    /home/nexus/node 
     
 安装完成，查看node版本
 
     ~ node -v
-    ~ /usr/sbin/node: 没有那个文件或目录(No such file or directory)
+    /usr/sbin/node: 没有那个文件或目录(No such file or directory)
     
 提示错误，没有找到node，查一下node安装位置
 
     ~ whereis node
     ~ node: /usr/sbin/node /usr/local/bin/node(安装了多次的原因，这里我要用的是前面一个)
 
-    
+增加软链接：node和npm到/usr/bin 
+
+    ~ sudo ln -s /usr/sbin//node /usr/bin/node
+    ~ sudo ln -s /usr/sbin/npm /usr/bin/npm
+
+查看node和npm版本
+
+    ~ node -v
+    v0.13.0-pre
+    ~ npm -v
+    1.4.28
+
+
