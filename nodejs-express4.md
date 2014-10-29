@@ -16,4 +16,5 @@
     > nodejs-demo@0.0.0 start /home/nexus/workspace/nodejs-demo
     > node ./bin/www
 
+  本地的3000端口被打开，通过浏览器访问: localhost:3000
   
