@@ -13,3 +13,7 @@
   启动项目
   
     ~npm start
+    > nodejs-demo@0.0.0 start /home/nexus/workspace/nodejs-demo
+    > node ./bin/www
+
+  
