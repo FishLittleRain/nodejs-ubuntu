@@ -5,3 +5,11 @@
   express命令创建工程，支持ejs
     
     ~express -e nodejs-demo
+  
+  下载依赖包
+  
+    ~npm install
+    
+  启动项目
+  
+    ~npm start
