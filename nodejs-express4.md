@@ -119,3 +119,19 @@ header.html
     <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
     </head>
     <body screen_capture_injected="true">
+    
+index.html
+
+    <% include header.html %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <% include footer.html %>
+    
+footer.html
+
+    <script src="/javascripts/jquery-1.9.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    </body>
+    </html>
+  
+访问localhost:3000。
