@@ -86,3 +86,21 @@
 
 
 module.exports = app;
+
+3. 增加Bootstrap界面框架
+
+复制到public/stylesheets目录
+ 
+    bootstrap.min.css
+    bootstrap-responsive.min.css
+    
+复制到public/javascripts目录
+
+    bootstrap.min.js
+    jquery-1.9.1.min.js
+    
+接下来，我们把index.html页面切分成3个部分：header.html, index.html, footer.html
+
+header.html, 为html页面的头部区域
+index.html, 为内容显示区域
+footer.html，为页面底部区域
