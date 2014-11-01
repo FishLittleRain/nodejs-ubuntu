@@ -102,5 +102,20 @@ module.exports = app;
 接下来，我们把index.html页面切分成3个部分：header.html, index.html, footer.html
 
 header.html, 为html页面的头部区域
+
 index.html, 为内容显示区域
+
 footer.html，为页面底部区域
+
+header.html
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <title><%=: title %></title>
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
+    </head>
+    <body screen_capture_injected="true">
