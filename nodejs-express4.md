@@ -87,7 +87,7 @@
 
 module.exports = app;
 
-3. 增加Bootstrap界面框架
+##3. 增加Bootstrap界面框架
 
 复制到public/stylesheets目录
  
@@ -153,3 +153,17 @@ footer.html
     app.post('/login', routes.doLogin);
     app.get('/logout', routes.logout);
     app.get('/home', routes.home);
+
+##4. Session使用
+
+使用connect-mongostore配置session
+
+   var express = require('express');
+   var session = require('express-session');
+   var MongoStore = require('connect-mongostore')(session);
+   var app = express();
+   
+    app.use(session({
+    secret: 'my secret',
+    store: new MongoStore({'db': 'sessions'})
+    }));
