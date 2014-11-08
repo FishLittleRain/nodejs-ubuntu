@@ -163,7 +163,7 @@ footer.html
    var MongoStore = require('connect-mongostore')(session);
    var app = express();
    
-    app.use(session({
-    secret: 'my secret',
-    store: new MongoStore({'db': 'sessions'})
-    }));
+   app.use(session({
+   secret: 'my secret',
+   store: new MongoStore({'db': 'sessions'})
+   }));
