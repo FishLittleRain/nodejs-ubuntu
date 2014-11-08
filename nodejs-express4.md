@@ -158,12 +158,12 @@ footer.html
 
 使用connect-mongostore配置session
 
-   var express = require('express');
-   var session = require('express-session');
-   var MongoStore = require('connect-mongostore')(session);
-   var app = express();
-   
-   app.use(session({
-   secret: 'my secret',
-   store: new MongoStore({'db': 'sessions'})
-   }));
+    var express = require('express');
+    var session = require('express-session');
+    var MongoStore = require('connect-mongostore')(session);
+    var app = express();
+
+    app.use(session({
+    secret: 'my secret',
+    store: new MongoStore({'db': 'sessions'})
+    }));
