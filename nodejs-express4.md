@@ -136,7 +136,7 @@ footer.html
   
 访问localhost:3000。
 
-4. 路由功能
+##4. 路由功能
 
 访问路径：/，页面：index.html，不需要登陆，可以直接访问。
 
@@ -154,7 +154,89 @@ footer.html
     app.get('/logout', routes.logout);
     app.get('/home', routes.home);
 
-##4. Session使用
+routes/index.js文件，增加对应的方法。
+
+    router.get('/', function(req, res) {
+      res.render('index', { title: 'Express' });
+    });
+    
+    router.get('index' , function(req, res){
+      res.render('index', { title: 'Express' });
+    });
+    
+    router.get('login', function(req, res){
+      res.render('login', { title: '用户登陆'});
+    });
+    
+    function doLogin = (req, res){
+      var user={
+        username:'admin',
+        password:'admin'
+      }
+      if(req.body.username===user.username && req.body.password===user.password){
+        res.redirect('/home.html');
+      }
+      res.redirect('/login.html');
+      });
+
+    router.get('logout', function(req, res){
+      res.redirect('/');
+    });
+    
+    router.get('home', function(req, res){
+      var user={
+          username:'admin',
+          password:'admin'
+      }
+    
+    res.render('home', { title: 'Home',user: user});
+    
+    });
+
+创建views/login.html和views/home.html两个文件
+
+login.html
+
+    <% include header.html %>
+    <div class="container-fluid">
+    <form class="form-horizontal" method="post">
+    <fieldset>
+    <legend>用户登陆</legend>
+    <div class="control-group">
+    <label class="control-label" for="username">用户名</label>
+    <div class="controls">
+    <input type="text" class="input-xlarge" id="username" name="username">
+    </div>
+    </div>
+    <div class="control-group">
+    <label class="control-label" for="password">密码</label>
+    <div class="controls">
+    <input type="password" class="input-xlarge" id="password" name="password">
+    </div>
+    </div>
+    <div class="form-actions">
+    <button type="submit" class="btn btn-primary">登陆</button>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    <% include footer.html %>
+
+home.html
+
+    <% include header.html %>
+    <h1>Welcome <%= user.username %>, 欢迎登陆！！</h1>
+    <a claa="btn" href="/logout">退出</a>
+    <% include footer.html %>
+
+修改index.html，增加登陆链接
+
+    <% include header.html %>
+    <h1>Welcome to <%= title %></h1>
+    <p><a href="/login">登陆</a></p>
+    <% include footer.html %>
+
+##5. Session使用
 
 使用connect-mongostore配置session
 
@@ -167,3 +249,22 @@ footer.html
     secret: 'my secret',
     store: new MongoStore({'db': 'sessions'})
     }));
+
+修改routes/index.js文件
+
+    function doLogin(req, res) = {
+      var user={
+        username:'admin',
+        password:'admin'
+      }
+      if(req.body.username===user.username && req.body.password===user.password){
+        req.session.user=user;
+        res.redirect('/home.html');
+      }
+      res.redirect('/login.html');
+    });
+    
+    function logout(req, res) = {
+      req.session.user=null;
+      res.redirect('/');
+    };
