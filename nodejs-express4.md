@@ -148,11 +148,11 @@ footer.html
 
 在app.js文件中增加路由配置
 
-    app.get('/', routes.index);
-    app.get('/login', routes.login);
-    app.post('/login', routes.doLogin);
-    app.get('/logout', routes.logout);
-    app.get('/home', routes.home);
+    app.get('/', routes);
+    app.get('/login', routes);
+    app.post('/login', routes);
+    app.get('/logout', routes);
+    app.get('/home', routes);
 
 routes/index.js文件，增加对应的方法。
 
