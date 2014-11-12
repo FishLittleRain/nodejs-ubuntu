@@ -168,7 +168,7 @@ routes/index.js文件，增加对应的方法。
       res.render('login', { title: '用户登陆'});
     });
     
-    function doLogin = (req, res){
+    function doLogin(req, res){
       var user={
         username:'admin',
         password:'admin'
@@ -252,7 +252,7 @@ home.html
 
 修改routes/index.js文件
 
-    function doLogin(req, res) = {
+    function doLogin(req, res){
       var user={
         username:'admin',
         password:'admin'
@@ -264,7 +264,7 @@ home.html
       res.redirect('/login.html');
     });
     
-    function logout(req, res) = {
+    function logout(req, res){
       req.session.user=null;
       res.redirect('/');
     };
