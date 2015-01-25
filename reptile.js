@@ -23,9 +23,11 @@ app.get('/', function (req, res, next) {
 
         //        res.send(items);
         var name = $('#content h1').html();
+        var imagesource = $('#mainpic img').attr('src');
+           // res.writeHead(200, {"Content-Type": "text/plain"});
 
-        res.send($('#content').html());
-         //   res.send($.html());
+         //   res.write(imagesource);
+            res.send($('.actor .attrs a').html());
     });
 });
 
