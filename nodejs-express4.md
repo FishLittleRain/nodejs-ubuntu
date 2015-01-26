@@ -268,3 +268,4 @@ home.html
       req.session.user=null;
       res.redirect('/');
     };
+##6. Mongoose使用
