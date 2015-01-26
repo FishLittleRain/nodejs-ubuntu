@@ -24,10 +24,14 @@ app.get('/', function (req, res, next) {
         //        res.send(items);
         var name = $('#content h1').html();
         var imagesource = $('#mainpic img').attr('src');
-           // res.writeHead(200, {"Content-Type": "text/plain"});
 
+            var introtitle =  $('.related-info h2').text();
+            var intro = $('.related-info .all').text();
+           // res.writeHead(200, {"Content-Type": "text/plain"});
+            //http://movie.douban.com/photos/photo/2222569901/
+            //http://img3.douban.com/view/movie_poster_cover/spst/public/p2219406504.jpg
          //   res.write(imagesource);
-            res.send($('.actor .attrs a').html());
+            res.send($('#info').html());
     });
 });
 
