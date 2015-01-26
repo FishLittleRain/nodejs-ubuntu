@@ -269,3 +269,16 @@ home.html
       res.redirect('/');
     };
 ##6. Mongoose使用
+
+增加mongoose的类库
+
+    cd d:/nexus/node/nodejs-demo
+    npm install mongoose
+
+增加models目录，并添加mongodb.js
+
+    var mongoose = require('mongoose');
+    mongoose.connect('mongodb://localhost/nodejs');
+    exports.mongoose = mongoose;
+    
+指定Mongo的数据库名为nodejs
