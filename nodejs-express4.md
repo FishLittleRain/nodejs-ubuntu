@@ -282,3 +282,44 @@ home.html
     exports.mongoose = mongoose;
     
 指定Mongo的数据库名为nodejs
+
+models目录，并添加Movie.js
+   
+    var mongodb = require('./mongodb');
+    var Schema = mongodb.mongoose.Schema;
+    var MovieSchema = new Schema({
+    name : String,
+    alias : [String],
+    publish : Date,
+    create_date : { type: Date, default: Date.now},
+    images :{
+    coverSmall:String,
+    coverBig:String,
+    },
+    source :[{
+    source:String,
+    link:String,
+    swfLink:String,
+    quality:String,
+    version:String,
+    lang:String,
+    subtitle:String,
+    create_date : { type: Date, default: Date.now }
+    }]
+    });
+    var Movie = mongodb.mongoose.model("Movie", MovieSchema);
+    var MovieDAO = function(){};
+    module.exports = new MovieDAO();
+    
+指定Mongo的数据库集为Movie
+
+app.js增加访问路径
+
+    var movies = require('./routes/movie');
+    ...
+    app.get('/movie/add',movies);//增加
+    app.post('/movie/add',movies);//提交
+    app.get('/movie/:name',movies);//编辑查询
+    app.get('/movie/json/:name',movies);//JSON数据
+    
+在routes目录，增加movie.js
