@@ -268,3 +268,117 @@ home.html
       req.session.user=null;
       res.redirect('/');
     };
+##6. Mongoose使用
+
+增加mongoose的类库
+
+    cd d:/nexus/node/nodejs-demo
+    npm install mongoose
+
+增加models目录，并添加mongodb.js
+
+    var mongoose = require('mongoose');
+    mongoose.connect('mongodb://localhost/nodejs');
+    exports.mongoose = mongoose;
+    
+指定Mongo的数据库名为nodejs
+
+models目录，并添加Movie.js
+   
+    var mongodb = require('./mongodb');
+    var Schema = mongodb.mongoose.Schema;
+    var MovieSchema = new Schema({
+    name : String,
+    alias : [String],
+    publish : Date,
+    create_date : { type: Date, default: Date.now},
+    images :{
+    coverSmall:String,
+    coverBig:String,
+    },
+    source :[{
+    source:String,
+    link:String,
+    swfLink:String,
+    quality:String,
+    version:String,
+    lang:String,
+    subtitle:String,
+    create_date : { type: Date, default: Date.now }
+    }]
+    });
+    var Movie = mongodb.mongoose.model("Movie", MovieSchema);
+    var MovieDAO = function(){};
+    module.exports = new MovieDAO();
+    
+指定Mongo的数据库集为Movie
+
+app.js增加访问路径
+
+    var movies = require('./routes/movie');
+    ...
+    app.get('/movie/add',movies);//增加
+    app.post('/movie/add',movies);//提交
+    app.get('/movie/:name',movies);//编辑查询
+    app.get('/movie/json/:name',movies);//JSON数据
+    
+在routes目录，增加movie.js
+
+    var Movie = require('./../models/Movie.js');
+    var express = require('express');
+    var router = express.Router();
+    router.get('/movie/add' , function(req, res) {
+            return res.render('movie',{
+                title:'新增加|电影|管理|moive.me',
+                label:'新增加电影',
+                movie:false,
+                content:""
+            });
+    });
+    router.post('/movie/add' , function(req, res) {
+        console.log(req.body.content);
+        var json = req.body.content;
+        if(json._id){//update
+        } else {//insert
+            Movie.save(json, function(err){
+                if(err) {
+                    res.send({'success':false,'err':err});
+                } else {
+                    res.send({'success':true});
+                }
+            });
+        }
+    });
+    router.get('/movie/:name' , function(req, res) {
+        if(req.params.name) {//
+           //var obj = movieJSON(req, res);
+            //res.send(obj);
+            Movie.findByName(req.params.name,function(err, obj){
+                return res.render('movie', {
+                    title:req.params.name+'|电影|管理|moive.me',
+                    label:'编辑电影:'+req.params.name,
+                    movie:req.params.name,
+                    content:obj
+                 });
+            });
+        }
+    });
+    module.exports = router;
+    
+在views目录，增加movie.html
+
+    <% include header.html %>
+    <div class="container-fluid">
+    <div class="row-fluid">
+    <div class="span8">
+    <form>
+    <fieldset>
+    <legend><%=label%></legend>
+    <textarea id="c_editor" name="c_editor" class="span12" rows="10"></textarea>
+    <button id="c_save" type="button" class="btn btn-primary">保存</button>
+    </fieldset>
+    <form>
+    </div>
+    </div>
+    </div>
+    <% include footer.html %>
